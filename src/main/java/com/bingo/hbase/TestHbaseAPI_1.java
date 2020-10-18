@@ -33,7 +33,7 @@ public class TestHbaseAPI_1 {
 
         //3、操作数据
         //3-1) 判断命名空间
-        String namespace = "mynamespace";
+        String namespace = "bingo";
         try {
             NamespaceDescriptor descriptor = admin.getNamespaceDescriptor(namespace);
         } catch (NamespaceNotFoundException e) {
@@ -46,7 +46,7 @@ public class TestHbaseAPI_1 {
         }
 
         //3-2)
-        TableName cosmicTable = TableName.valueOf(namespace + ":cosmic");
+        TableName cosmicTable = TableName.valueOf(namespace + ":school");
         boolean exists = admin.tableExists(cosmicTable);
         if (exists) {
             //获取指定的表对象
@@ -63,7 +63,7 @@ public class TestHbaseAPI_1 {
                 Put put = new Put(bytes);
                 String family = "logs";
                 String column = "date";
-                String value = "10.16";
+                String value = "10.18";
                 put.addColumn(Bytes.toBytes(family), Bytes.toBytes(column), Bytes.toBytes(value));
                 table.put(put);
                 log.info("add data success!");
